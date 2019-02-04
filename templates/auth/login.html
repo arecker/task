@@ -1,0 +1,36 @@
+{% extends "blank.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-md-4">
+  {% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  {% if next %}
+  {% if user.is_authenticated %}
+  <p>
+    Your account doesn't have access to this page. To proceed, please
+    login with an account that has access.
+  </p>
+  {% else %}
+  <p>
+    Please login to see this page.
+  </p>
+  {% endif %}
+  {% endif %}
+</div>
+<div class="col-md-4">
+  <form method="post" action="{% url 'login' %}" novalidate>
+    {% csrf_token %}
+    {{ form | crispy }}
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group">
+	<button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      <div class="btn-group" role="group" >
+	<a class="btn btn-light" href="{% url 'password_reset' %}" role="button">Reset Password</a>
+      </div>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+</div>
+{% endblock %}

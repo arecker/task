@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-4">
+  <h1 class="lead">Assigned to Me</h1>
+  <div class="table">
+    <div class="tbody">
+      {% for task in my_tasks %}
+      <tr>
+	<th>{{ task.description }}</th>
+	<th>{{ task.due_at }}</th>
+      </tr>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
