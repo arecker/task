@@ -20,6 +20,7 @@ class Task(models.Model):
     due_at = models.DateTimeField(null=True, blank=True, verbose_name='Due')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_by')
     is_complete = models.BooleanField(default=False, verbose_name='Complete')
+    is_archived = models.BooleanField(default=False, verbose_name='Archived')
     assignee = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='assignee')
 
     def __str__(self):
