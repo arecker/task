@@ -1,0 +1,15 @@
+{% extends "blank.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-md-4">
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form | crispy }}
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group">
+	<button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

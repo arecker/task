@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-8">
+  <div class="btn-toolbar" role="toolbar">
+    <div class="btn-group" role="group">
+      <a class="btn btn-success" href="{% url 'task-create' %}" role="button">New Task</a>
+    </div>
+  </div>
+  <table class="table">
+    <tbody>
+      {% for obj in object_list %}
+      <tr>
+	<td>{{ obj.description }}</td>
+	<td>{{ obj.due_at | date }}</td>
+	<td>{{ obj.assignee }}</td>
+	<td>
+	  <div class="btn-toolbar" role="toolbar">
+	    <div class="btn-group" role="group">
+	      <a class="btn btn-light" href="#" role="button">Complete</a>
+	      <a class="btn btn-light" href="#" role="button">Edit</a>
+	      <a class="btn btn-light" href="#" role="button">Delete</a>
+	    </div>
+	  </div>
+	</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
